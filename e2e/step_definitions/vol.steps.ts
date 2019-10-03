@@ -35,9 +35,16 @@ When('we select a customer called {string}', async function (customerName) {
 
   return this.actions.click(volPEPage.selectCustomerButton);
 
+
 });
 
-Then('we see what vehicles they own', function () {
+Then('we see what vehicles they own {string}', async function (vehicleMake) {
+
+  this.actions.clickOnElementInTable(volPEPage.vehicleResultsTable, volPEPage.vehicleCellSelector, vehicleMake);
+
+  return this.actions.click(volPEPage.selectVehicleButton);
+
+  //return this.actions.clickOnElementInTable(volPEPage.vehicleResultsTable, volPEPage.vehicleCellSelector);
+
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
 });

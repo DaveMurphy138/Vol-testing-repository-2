@@ -18,4 +18,10 @@ export class Actions {
             await tableElement.all(by.cssContainingText(rowSelector, text)).first().click();
         }
 
+    public checkForElementInTable = async (tableElement: ElementFinder, rowSelector: string, text: string) => {
+            const row = tableElement.$(rowSelector);
+            await browser.wait(ExpectedConditions.visibilityOf(row));
+            return await tableElement.all(by.cssContainingText(rowSelector, text)).first().isPresent();
+        }
+
 }
